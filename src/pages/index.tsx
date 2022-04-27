@@ -3,12 +3,7 @@ import { Input } from "../components/Form/Input";
 
 export default function SignIn() {
   return (
-    <Flex
-      w="100vw"
-      h="100vh"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Flex w="100vw" h="100vh" alignItems="center" justifyContent="center">
       <Flex
         as="form"
         width="100%"
@@ -22,13 +17,8 @@ export default function SignIn() {
           <Input type="email" name="email" label="E-mail" />
           <Input type="password" name="password" label="Senha" />
         </Stack>
-        
-        <Button
-          type="submit"
-          mt="6"
-          colorScheme="pink"
-          size="lg"
-        >
+
+        <Button type="submit" mt="6" colorScheme="pink" size="lg">
           Entrar
         </Button>
       </Flex>

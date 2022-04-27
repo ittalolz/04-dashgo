@@ -2,11 +2,10 @@ import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
-    
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const options: ApexOptions = {
   chart: {
@@ -16,10 +15,10 @@ const options: ApexOptions = {
     zoom: {
       enabled: false,
     },
-    foreColor: theme.colors.gray[500]
+    foreColor: theme.colors.gray[500],
   },
   grid: {
-    show: false,    
+    show: false,
   },
   dataLabels: {
     enabled: false,
@@ -30,67 +29,64 @@ const options: ApexOptions = {
   xaxis: {
     type: "datetime",
     axisBorder: {
-      color: theme.colors.gray[600]
+      color: theme.colors.gray[600],
     },
     axisTicks: {
-      color: theme.colors.gray[600]
+      color: theme.colors.gray[600],
     },
     categories: [
-      new Date('2022-03-18').getTime(),
-      new Date('2022-03-19').getTime(),
-      new Date('2022-03-20').getTime(),
-      new Date('2022-03-21').getTime(),
-      new Date('2022-03-22').getTime(),
-      new Date('2022-03-23').getTime(),
-      new Date('2022-03-24').getTime(),
-      new Date('2022-03-25').getTime(),
-    ]
+      new Date("2022-03-18").getTime(),
+      new Date("2022-03-19").getTime(),
+      new Date("2022-03-20").getTime(),
+      new Date("2022-03-21").getTime(),
+      new Date("2022-03-22").getTime(),
+      new Date("2022-03-23").getTime(),
+      new Date("2022-03-24").getTime(),
+      new Date("2022-03-25").getTime(),
+    ],
   },
   fill: {
     opacity: 0.3,
-    type: 'gradient',
+    type: "gradient",
     gradient: {
-      shade: 'dark',
+      shade: "dark",
       opacityFrom: 0.7,
-      opacityTo: 0.3
-    }
-  }  
+      opacityTo: 0.3,
+    },
+  },
 };
 
-const series = [
-  {name: 'series1', data: [31, 120, 124, 10, 28, 51, 61, 109]}
-]
+const series = [{ name: "series1", data: [31, 120, 124, 10, 28, 51, 61, 109] }];
 
 export default function Dashboard() {
   return (
     <Flex direction="column" h="100vh">
       <Header />
 
-      <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6" >
+      <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
         <Sidebar />
 
-        <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
-          <Box
-            p="8"
-            bg="gray.800"
-            borderRadius={8}
-            pb="4"
-          >
-            <Text fontSize="lg" mb="4">Inscritos da semana</Text>
+        <SimpleGrid
+          flex="1"
+          gap="4"
+          minChildWidth="320px"
+          alignItems="flex-start"
+        >
+          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+            <Text fontSize="lg" mb="4">
+              Inscritos da semana
+            </Text>
             <Chart options={options} series={series} type="area" height={160} />
           </Box>
 
-          <Box
-            p="8"
-            bg="gray.800"
-            borderRadius={8}
-            pb="4"
-          >
-            <Text fontSize="lg" mb="4">Taxa de Abertura</Text>
+          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+            <Text fontSize="lg" mb="4">
+              Taxa de Abertura
+            </Text>
             <Chart options={options} series={series} type="area" height={160} />
           </Box>
         </SimpleGrid>
       </Flex>
-    </Flex>    
+    </Flex>
   );
 }
