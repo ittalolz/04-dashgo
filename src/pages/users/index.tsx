@@ -15,6 +15,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useEffect } from "react";
 import { RiAddLine, RiEditLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
@@ -23,8 +24,14 @@ import { Sidebar } from "../../components/Sidebar";
 export default function UserList() {
   const isWideVersion = useBreakpointValue({
     base: false,
-    lg: true
-  })
+    lg: true,
+  });
+
+  useEffect(() => {
+    fetch("https://localhost:3000/api/users")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
 
   return (
     <Box>
@@ -77,7 +84,7 @@ export default function UserList() {
                     </Text>
                   </Box>
                 </Td>
-                { isWideVersion && <Td>27 de Abril, 2022</Td>}
+                {isWideVersion && <Td>27 de Abril, 2022</Td>}
                 <Td>
                   <Button
                     as="a"
@@ -90,8 +97,6 @@ export default function UserList() {
                   </Button>
                 </Td>
               </Tr>
-
-              
             </Tbody>
           </Table>
 
